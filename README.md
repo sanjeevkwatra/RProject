@@ -1,0 +1,2 @@
+#  The comments are all self explanatory in the accmpanying R file
+ # The last part was not finished. I was able to clean up the data, group by activity and subject, but do not know exactly to create a tidy set from here -- and there is no   time last. I jope the evaluate will try by run_analysis.R
