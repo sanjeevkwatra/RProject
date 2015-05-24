@@ -44,6 +44,7 @@ y_train <- read.table(file_path)
 
 X <- rbind(X_test, X_train)
 y <- rbind(y_test, y_train)
+
 features <- read.table("features.txt")
 
 # Clean up feature names
@@ -67,7 +68,6 @@ subject_test <- read.table(file_path)
 
 file_path = file.path ("train", "subject_train.txt", fsep = .Platform$file.sep)
 subject_train <- read.table(file_path)
-
 # merge subject data
 
 subject <- rbind(subject_test, subject_train)
@@ -79,6 +79,8 @@ X$activity <- y_activity[[1]]
 
 grouped <- group_by (X, activity, subject)
 
+# Below is the merged cleaned data that is being turned in
+write.table(X, "X.txt", row.names=FALSE)
 
 # From this grouping I should be able to create the data set required for the last part 
 # of the assignment. Since the deadline is approaching -- I am unable to finish the last part
