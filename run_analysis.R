@@ -71,17 +71,25 @@ subject_train <- read.table(file_path)
 # merge subject data
 
 subject <- rbind(subject_test, subject_train)
-X$subject <- subject[[1]]
+X_subset$subject <- subject[[1]]
 
 # Append y_activity to X
 
-X$activity <- y_activity[[1]]
+X_subset$activity <- y_activity[[1]]
 
-grouped <- group_by (X, activity, subject)
+grouped <- group_by (X_subset, activity, subject)
 
 # Below is the merged cleaned data that is being turned in
-write.table(X, "X.txt", row.names=FALSE)
+write.table(X_subset, "X.txt", row.names=FALSE)
 
 # From this grouping I should be able to create the data set required for the last part 
 # of the assignment. Since the deadline is approaching -- I am unable to finish the last part
 
+# Just realised the problem was that function "summarize" doesn't work -- but 
+# "summarize" does. Hours wasted before I found this in stack overflow
+# Better late than never... turning Part 5 of assigmnet  in though it is
+# past the deadline
+
+part5 <- summarise_each(grouped, funs(mean))
+
+write.table(part5, "part5.txt", row.names=FALSE)
